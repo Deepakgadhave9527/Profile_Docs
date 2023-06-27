@@ -198,6 +198,29 @@ console.log(person2)
 console.log(p3)
 
 
+const obj={
+    name:"ABC",
+    age:20,
+    address:{
+        city:'Beijing',
+        country:'China'
+    }
+}
+const obj2 ={...obj}
+obj2.name="PQR"
+
+const obj3 =Object.assign({},obj)
+obj3.age=21
+
+const obj4=JSON.parse(JSON.stringify(obj))
+obj4.address.city="Pune"
+console.log("obj",obj);
+console.log("obj2",obj2);
+console.log("obj3",obj3);
+console.log("obj4",obj4);
+
+
+
 //=========================================Set====================
 Set:-
 Set is like an array but it stores only unique elements.

@@ -117,6 +117,33 @@
 
     The React Context API allows to easily access data at different levels of the component tree, without having to pass
     data down through props.
+    import { createContext } from 'react';
+
+const contex = createContex("DefaultValue")
+
+import contex from "./contex";
+
+const theme ="contex value to passed to componet "
+
+<contex.provider>
+
+    <Component value={theme} />
+</contex.provider>
+
+
+import contex from "./"
+
+<contex.consumer>
+    theme=>{
+    return <>{theme}</>
+    }
+</contex.consumer>
+
+<!-- by hook -->
+
+import {useContex} fromm "./"
+
+const theme = useContext(context)
 
 
 

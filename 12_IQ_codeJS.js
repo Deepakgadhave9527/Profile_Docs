@@ -19,10 +19,9 @@ console.log("============  duplicate ======================");
 var duplicate = ["A", "B", "A", "C", "B"];
 var set = [...new Set(duplicate)];
 console.log(set);
-  
+
 const notuniquearray = [];
 const uniquearray = [];
-
 duplicate.forEach((val) => {
   if (uniquearray.includes(val)) {
     console.log(uniquearray.includes(val) + val);
@@ -31,8 +30,6 @@ duplicate.forEach((val) => {
     uniquearray.push(val);
   }
 });
-
-
 console.log(uniquearray);
 console.log(notuniquearray);
 

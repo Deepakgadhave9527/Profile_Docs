@@ -33,10 +33,12 @@ there are two main methods for rendering web pages:
 
 What is Server Side Rendering (SSR)?
 
-Server Side Rendering is the traditional way of rendering web pages.
-When a user requests a page from the server, the server processes the request and generates the complete HTML file, which is send to browser
-The browser receives the complete HTML file and displays it to the user.
-Better performance, SEO, and security.
+-Server Side Rendering is the traditional way of rendering web pages.
+-When a user requests a page from the server, the server processes the 
+request and generates the complete HTML file, 
+which is send to browser
+-The browser receives the complete HTML file and displays it to the user.
+-Better performance, SEO, and security.
 
 
 What is Client Side Rendering (CSR)?
@@ -44,6 +46,7 @@ Client Side Rendering is a more modern approach to rendering web pages.
 In this method, the server sends only the necessary data and JavaScript files to the browser. 
 Browser generates HTML with JavaScript.
 Allows dynamic content and improved user experience.
+
 
 Differences:
 
@@ -55,19 +58,23 @@ CSR: More dynamic, better user experience, and reduces server load.
 
 
 ------------------------------------------------------------------------------------------------
-Authentication and authorization are two essential concepts in web development, often used together to manage access control and secure resources. Here's a brief overview of each:
+Authentication and authorization are two essential concepts in web development, 
+ used together to manage access control and secure resources.
+ Here's a brief overview of each:
 
 1. **Authentication:**
-   - Authentication is the process of verifying the identity of a user, typically through credentials such as username and password.
-   - The goal of authentication is to ensure that users are who they claim to be before granting access to protected resources or features.
+   - Authentication is the process of verifying the identity of a user, 
+   typically through credentials such as username and password.
    - Common authentication mechanisms include:
      - Form-based authentication: Users provide credentials via a login form.
      - Token-based authentication: Users receive a token after successful login, which is then used to authenticate subsequent requests.
      - OAuth/OpenID Connect: Third-party authentication protocols used for single sign-on (SSO) and social login.
    - Authentication is often implemented at the application level, where user credentials are verified against a database or external identity provider.
+   - The goal of authentication is to ensure that users are who they claim to be before granting access to protected resources or features.
 
 2. **Authorization:**
-   - Authorization is the process of determining whether a user has the necessary permissions to access a resource or perform a specific action.
+   - Authorization is the process of determining whether a user 
+   has the necessary permissions to access a resource or perform a specific action.
    - Once a user is authenticated, authorization rules are applied to determine what they can and cannot do within the application.
    - Authorization can be based on various factors, including user roles, groups, attributes, or custom policies.
    - Common authorization mechanisms include:
@@ -77,41 +84,104 @@ Authentication and authorization are two essential concepts in web development, 
 
 In summary, authentication verifies user identity, while authorization controls user access to resources based on their identity and permissions. Together, these concepts form the foundation of access control and security in web applications.
 ------------------------------------------------------------------------------------------------
+Code optimization
 
+
+
+Code optimization in React.js involves improving the efficiency, performance, and maintainability of your codebase. 
+It includes techniques such as minimizing unnecessary re-renders,
+ reducing bundle size,
+  optimizing network requests,
+   managing state efficiently, 
+   and enhancing code readability and maintainability.
+
+
+------------------------------------------------------------------------------------------------
+accessibility
+
+
+Web accessibility  is the design and creation of websites that can be used by everyone.
+<!-- Accessibility support is necessary to allow assistive technology to interpret web pages. -->
+Accessibility in ReactJS refers 
+to the web applications built with React are usable by people with disabilities. 
+<!-- This includes individuals who may have visual, auditory, motor, or cognitive impairments.  -->
+React provides various tools and techniques to make applications more accessible, such as:
+
+1. Semantic HTML: Using appropriate HTML elements to provide meaning and structure to the content.
+ For example, using `<button>` instead of `<div>` for clickable elements.
+
+2. ARIA attributes: Accessible Rich Internet Applications (ARIA) attributes can be added
+ to HTML elements to provide additional information to assistive technologies. 
+React supports adding ARIA attributes to components to enhance accessibility.
+
+3. Keyboard navigation: Ensuring that all interactive elements can be accessed and operated using a keyboard alone,
+ without relying on mouse or touch input.
+
+4. Focus management: Managing focus to ensure that users can navigate through the application in a logical order, 
+and that focus is not trapped within certain elements.
+
+5. Screen reader support: Testing applications with screen readers to ensure that content is properly announced and navigable.
+
+6. Providing alternative text for images: Adding descriptive alt text to images to ensure that users with visual impairments understand the content.
+
+7. Handling dynamic content: Ensuring that dynamically generated content is accessible and properly announced by assistive technologies.
+
+By following best practices and using the accessibility features provided by React, developers can create web applications that are inclusive and usable by a wider range of users.
+
+
+
+
+------------------------------------------------------------------------------------------------
+What is assistive technology in websites?
+Screen readers, voice recognition software, reading assistants, and switch devices that replace the need to use a keyboard or mouse are examples of assistive technologies.
 
 
 
 
 
 ------------------------------------------------------------------------------------------------
-
-
-
-
-
-
-------------------------------------------------------------------------------------------------
-
-
-
-
-
-
-------------------------------------------------------------------------------------------------
-
+Interceptors are a powerful feature provided by libraries such as Axios or HTML5 Fetch api 
+that allow you to intercept and manipulate HTTP requests or responses globally 
+before they are handled by your application. 
+In the context of React.js, interceptors can be used to perform tasks such as adding authentication headers, logging requests, modifying responses, or handling errors.
 
 
 
 
 
 ------------------------------------------------------------------------------------------------
+StrictMode
 
-
-
+-StrictMode is a tool for highlighting potential problems in an application. 
+-Like Fragment, StrictMode does not render any visible UI. 
+-React introduces additional checks and warnings for potential issues during development.
+-It's not for production use
 
 
 
 ------------------------------------------------------------------------------------------------
+synthetic events 
+In React, synthetic events are a layer of abstraction over native browser events.
+They provide a consistent interface for handling events across different browsers
+and offer additional features.
+
+
+- Attach event handlers like `onClick` to React elements.
+- React passes a synthetic event object to your handler function.
+- The event object contains information such as the target element.
+- Use methods like `stopPropagation()` and `preventDefault()` to control event behavior.
+- Synthetic events ensure consistent and efficient event handling in React components.
+
+<!-- 
+You can attach event handlers like onClick to React elements,
+ and React passes a synthetic event object to your handler function. 
+ This object contains information about the event, 
+ such as the target element, 
+ and provides methods like stopPropagation() and preventDefault() for controlling event behavior. 
+ They make event handling consistent and efficient in React components.
+
+ -->
+
 
 
 

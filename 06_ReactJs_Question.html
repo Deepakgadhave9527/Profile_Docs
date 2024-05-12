@@ -22,11 +22,9 @@ Eager loading vs lazy loading
 -In lazy loading the initial loading time of the application is reduced by spliting the code
 
 -for spliting the code we can use using dynamic imports by React.lazy() method/function
--In lazy loading we can create multiple  bundle instead of creating  single bundle
--Each bundle can be separately downloaded when required.
-
 -The lazy loading does not reduce overall loading time.
-
+-In lazy loading we can create single bundle instead of creating multiple bundle
+-Each bundle can be separately downloaded when required.
 
 
 #1 Static imports:-
@@ -44,6 +42,8 @@ const m = React.lazy(()=>import('./module'));
 
 Q. What are the different lifecycle methods in React?
 
+-Each component in React has a lifecycle which you can monitor and manipulate during its three main phases.
+-The three phases are: Mounting, Updating, and Unmounting.
 
 -Each component in React has a lifecycle which has go to three main phase Mounting, Updating, and Unmounting.
 
@@ -62,8 +62,6 @@ React has four built-in methods that gets called in mounting phase, in this orde
 
 2) get_Derived_State_From_Props()
 This is called before rendering the elements in the DOM.
-- It's primarily used for updating the state based on changes in props.
-
 
 3) render()
 The render() method is required, and
@@ -71,45 +69,10 @@ its the method that actually outputs the HTML to the DOM.
 
 
 4) componentDidMount()
-
-- This method gets executed after the component has been rendered for the first time.
-- It's commonly used for performing side effects such as data fetching, integrating with other JavaScript frameworks, or setting up subscriptions.
-- It's not invoked during server-side rendering.
-
 this method gets executed after mounting a component.
 this method gets executed only once.
 this method is used perform one time initialization operations like
 fetching data from server, initializing a timer, etc.
-
-
--Each component in React has a lifecycle which you can monitor and manipulate during its three main phases.
--The three phases are: Mounting, Updating, and Unmounting.
-
-
-
-
-Of course! Here are additional points for each method:
-
-1) **constructor()**
-   - We can set the initial state of the component inside this method.
-   - It's also used for initializing variables, binding event handlers, and other setup operations.
-   - It's invoked before the component is mounted.
-
-2) **getDerivedStateFromProps()**
-   - This method is called before rendering, both on the initial mount and on subsequent updates.
-   - It's primarily used for updating the state based on changes in props.
-   - It should be a static method and return an object to update the state or null to indicate that the new props do not require any state updates.
-
-3) **render()**
-   - The render() method returns the JSX (or React elements) that represent the UI of the component.
-   - It's a pure function, meaning it should not modify component state or interact with the browser.
-   - It's called each time the component updates and should be idempotent (producing the same output for the same state and props).
-
-4) **componentDidMount()**
-   - This method gets executed after the component has been rendered for the first time.
-   - It's commonly used for performing side effects such as data fetching, integrating with other JavaScript frameworks, or setting up subscriptions.
-   - It's not invoked during server-side rendering.
-
 
 
 ```````````````````````````````````````````````````````````````````````````````````````````
@@ -180,22 +143,18 @@ Q10. What are controlled and uncontrolled components in React?
 
 - In Controlled Component current values accepts through props and
 if any changes then notify through call back like onchange
--Data is controlled by the React component.
+-It does not maintain its internal state.
+-Data is controlled by the parent component.
 -It allows validation control.
 -It has better control over the form elements and data.
-
--It does not maintain its internal state.
-
 
 ## uncontrolled component:
 
 -It accepts its current value as a ref.
+-It maintains internal states.
 -data is controlled by the DOM itself.
 -It does not allow validation control.
 -It has limited control over the form elements and data.
-
--It maintains internal states.
-
 
 
 
@@ -245,7 +204,6 @@ character or not!
 Q what is redux ?
 
 - Redux is a predictable state container for JavaScript applications.
-
 - Redux is a state management tool
 
 -There is a central store that holds the entire state of the application.
@@ -584,7 +542,6 @@ Q13 What is Virtual DOM?
 
 -Virtual DOM is an in-memory representation of real DOM.
 -It is a lightweight JavaScript object which is a copy of Real DOM.
-
 -ReactJS does not update the real DOM directly but it updates the Virtual DOM
 -Virtual dom is compared to Real dom, virtual dom update only that part in dom which changed.
 

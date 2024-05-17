@@ -1,7 +1,11 @@
+ 
+ 
+ 
  Explain Hoisting in javascript.
 Hoisting is the default behaviour of javascript where  the variable and function
 declarations are moved on top during the compilation phase
 
+clousure inner function can be access of outer function
 
 
 ------------------------------------------------------------------------------------------------
@@ -107,6 +111,131 @@ It includes techniques such as minimizing unnecessary re-renders,
    and enhancing code readability and maintainability.
 
 
+  the process of improving the efficiency, performance, and overall quality of software code without changing its functionality
+
+  1. React.StrictMode:
+  -Use React.StrictMode to detect potential issues in your codebase during development. 
+  -It helps identify unsafe lifecycles, deprecated APIs, and other potential problems.
+  
+  2. Memoization: 
+  Memoization is a technique used to optimize expensive computations by caching the results.
+ React provides a useMemo hook for memoizing values.
+ 
+ import React, { useMemo } from 'react';
+ 
+ const Component = ({ data }) => {
+   const processedData = useMemo(() => {
+     // Expensive computation
+     return data.map(item => item * 2);
+   }, [data]);
+ 
+   return (
+     <div>
+       {processedData.map((item, index) => (
+         <div key={index}>{item}</div>
+       ))}
+     </div>
+   );
+ };
+
+
+ 3 Code Splitting:
+  Splitting your code into smaller chunks allows lazy-loading components when needed, 
+  reducing the initial bundle size and speeding up the initial load time.
+  
+  import React, { lazy, Suspense } from 'react';
+
+  const LazyComponent = lazy(() => import('./LazyComponent'));
+  
+  const App = () => (
+    <Suspense fallback={<div>Loading...</div>}>
+      <LazyComponent />
+    </Suspense>
+  );
+  
+2. Minimize State: 
+ -Keep component state minimal to avoid unnecessary re-renders.
+  Only store state that affects the component's output. 
+  Avoid storing derived state if it can be computed from props or context.
+
+
+
+
+3. Avoid Inline Styles:
+-Inline styles can clutter your components and make maintenance difficult. Prefer using CSS classes or styled-components for better separation of concerns and easier styling management.
+
+4. Use PureComponent:
+-PureComponent can help optimize functional components by preventing re-renders unless props or state change. This can improve performance, especially in complex component trees.
+
+5. Optimize Context Consumers:
+-Context consumers can cause unnecessary re-renders if not optimized. Memoize values with useMemo or use only the necessary context values to avoid unnecessary updates.
+
+6. Lazy Load Images:
+-Load images lazily to improve initial page load times. Use libraries like react-lazyload to load images only when they enter the viewport, reducing the initial page payload.
+
+7. Memoize Callbacks:
+-Memoize callbacks using useCallback to prevent unnecessary re-renders, especially when passing them as props to child components. This can improve performance by avoiding unnecessary function re-creations.
+
+8. Optimize CSS:
+-Reduce CSS specificity and eliminate unused styles to improve performance. Minimize the number of style rules and use CSS preprocessors to generate optimized stylesheets.
+
+9. Use Keys Correctly:
+-Provide stable keys for list elements to aid React in reconciliation. Use unique and stable identifiers for keys to help React efficiently update the DOM when lists change.
+
+10. Server-Side Rendering (SSR) and Client-Side Rendering (CSR):
+-Choose the rendering approach that best fits your app's needs. SSR improves SEO and initial load times, while CSR provides a more dynamic user experience.
+
+11. Optimize Network Requests:
+-Minimize network requests by batching them, using HTTP/2, and optimizing API responses. Use techniques like data caching and prefetching to reduce latency and improve performance.
+
+12. Use Web Workers:
+-Offload CPU-intensive tasks to Web Workers to avoid blocking the main thread and improve the responsiveness of your app. Web Workers allow parallel execution of scripts, enhancing performance for tasks like data processing or image manipulation.
+
+13. Optimize Redux State:
+-Normalize Redux state to prevent unnecessary data duplication and improve performance. Use selectors to derive data efficiently and avoid unnecessary computations or re-renders.
+
+14. Bundle Analysis and Code Splitting:
+-Analyze your bundle size and split code into smaller chunks to reduce initial load times. Use tools like Webpack Bundle Analyzer to identify and optimize large dependencies.
+
+15. Debouncing and Throttling:
+-Use debouncing and throttling techniques to limit the frequency of function executions, especially for frequent events like scrolling or resizing. This prevents performance degradation due to excessive function calls.
+
+16. Using WebP and Image Optimization:
+-Optimize images for the web by using formats like WebP and tools to compress image files. Reduce image file sizes without compromising quality to improve loading times and user experience.
+
+17. Tree Shaking with ES6 Modules:
+-Eliminate dead code and reduce bundle size by leveraging tree shaking with ES6 modules. Tree shaking removes unused code during the bundling process, resulting in smaller bundle sizes and faster load times.
+
+18. PureComponent with Lists:
+-Use PureComponent or implement shouldComponentUpdate to prevent unnecessary re-renders of list items. This optimization technique can significantly improve performance when rendering large lists.
+
+19. Avoid Inline Functions:
+-Define functions outside render methods to prevent unnecessary re-renders caused by function re-creation. This optimization helps improve performance, especially in components that render frequently.
+
+20. Using Memoization Hooks:
+-Memoize expensive computations using useMemo to avoid unnecessary recalculations. Memoization can optimize performance by caching previous results and returning them when inputs remain the same.
+
+21. Virtualization:
+-Render only visible items in long lists to improve rendering performance. Virtualization techniques like windowing or infinite scrolling can significantly reduce rendering overhead, especially for large datasets.
+
+22. Code Splitting:
+-Split your code into smaller chunks and lazy-load them as needed to reduce initial load times. Code splitting improves performance by loading only the necessary code for the current user flow, reducing the initial page payload.
+
+23. Optimizing Render:
+-Use React.memo or PureComponent to optimize rendering performance. These optimizations prevent unnecessary re-renders of components and improve overall application performance.
+
+24. Profiler API:
+-Use the React Profiler API to identify performance bottlenecks in your application. Profiling can help pinpoint areas of your code that require optimization and improve overall performance.
+
+25. Lazy Loading Components:
+-Delay loading of components until they're needed to improve initial load times. Lazy loading techniques can help reduce the initial page payload and improve user experience, especially for large applications.
+
+26. Optimizing Images:
+-Optimize image loading and rendering to improve performance. Techniques like lazy loading, responsive images, and using modern image formats can significantly reduce loading times and bandwidth usage.
+
+27. Optimizing Props and State:
+-Ensure that props and state are optimized for rendering and performance. Avoid passing large or unnecessary data through props and minimize state updates to prevent unnecessary re-renders.
+
 ------------------------------------------------------------------------------------------------
 accessibility
 
@@ -117,15 +246,18 @@ Accessibility in ReactJS refers
 to the web applications built with React are usable by people with disabilities. 
 <!-- This includes individuals who may have visual, auditory, motor, or cognitive impairments.  -->
 React provides various tools and techniques to make applications more accessible, such as:
-
-1. Semantic HTML: Using appropriate HTML elements to provide meaning and structure to the content.
+-
+1. Semantic HTML:
+-Using appropriate HTML elements to provide meaning and structure to the content.
  For example, using `<button>` instead of `<div>` for clickable elements.
 
-2. ARIA attributes: Accessible Rich Internet Applications (ARIA) attributes can be added
+2. ARIA attributes:
+-Accessible Rich Internet Applications (ARIA) attributes can be added
  to HTML elements to provide additional information to assistive technologies. 
 React supports adding ARIA attributes to components to enhance accessibility.
 
-3. Keyboard navigation: Ensuring that all interactive elements can be accessed and operated using a keyboard alone,
+3. Keyboard navigation:
+-Ensuring that all interactive elements can be accessed and operated using a keyboard alone,
  without relying on mouse or touch input.
 
 4. Focus management: Managing focus to ensure that users can navigate through the application in a logical order, 
@@ -175,7 +307,7 @@ StrictMode
 ------------------------------------------------------------------------------------------------
 synthetic events 
 In React, synthetic events are a layer of abstraction over native browser events.
-They provide a consistent interface for handling events across different browsers
+They provide a consistent interface for handlin events across different browsers
 and offer additional features.
 
 
@@ -207,7 +339,7 @@ You can attach event handlers like onClick to React elements,
 Internationalization vs Localization
 
 1. **Internationalization (i18n)**: 
-Making software adaptable to different languages, regions, and cultures by designing it flexibly. 
+Making software for different languages, regions, and cultures by designing it flexibly. 
 This includes separating text from code, using language-neutral formats for dates and numbers,
  and ensuring UI layouts can handle various text lengths and directions.
 
@@ -224,7 +356,10 @@ It involves creating language-specific versions of the software and tailoring th
 
 Debouncing
 
-Debouncing in React means delaying the execution of a function until after a specified time has passed since the last invocation. It's used to optimize performance by reducing the frequency of function calls, particularly in scenarios like handling user input or scroll events.
+Debouncing in React means delaying the execution of a function until after a specified time has passed
+ since the last invocation.
+ It's used to optimize performance by reducing the frequency of function calls,
+  particularly in scenarios like handling user input or scroll events.
 1.  Debouncing in React is a technique used to delay the execution of a function until after a specified time has elapsed since the last time the function was invoked.
 
 2. **Purpose**: The primary purpose of debouncing is to optimize performance by reducing the frequency of function calls, especially in scenarios where rapid or frequent updates may cause unnecessary re-renders or performance bottlenecks.
@@ -250,8 +385,11 @@ This ordered list summarizes the key aspects of debouncing in React, providing a
 
 Difference:
 
-useMemo is used to memoize the result of a function computation, which can be any value, not necessarily React elements. It's typically used for optimizing expensive calculations.
-memo is used to memoize the rendering of a functional component based on its props. It's used to prevent unnecessary re-renders of a component when its props remain unchanged.
+useMemo is used to memoize the result of a function computation, which can be any value, 
+not necessarily React elements. It's typically used for optimizing expensive calculations.
+
+memo is used to memoize the rendering of a functional component based on its props.
+react.momo is used to prevent unnecessary re-renders of a component when its props remain unchanged.
 
 
 
@@ -267,11 +405,11 @@ In React.js, `splice` and `slice` are both methods used to manipulate arrays, bu
   - `startIndex`: The index at which to start changing the array.
   - `deleteCount`: The number of elements to remove from the array (if set to 0, no elements are removed).
   - Example:
-    ```javascript
+    
     const array = [1, 2, 3, 4, 5];
     array.splice(2, 1); // Removes 1 element starting from index 2
     // Result: array is now [1, 2, 4, 5]
-    ```
+  
     
 
 - **`slice()`**:
@@ -281,11 +419,11 @@ In React.js, `splice` and `slice` are both methods used to manipulate arrays, bu
   - `startIndex`: The index at which to begin the extraction (inclusive).
   - `endIndex`: The index before which to end the extraction (exclusive).
   - Example:
-    ```javascript
+    
     const array = [1, 2, 3, 4, 5];
     const newArray = array.slice(1, 4); // Returns a new array with elements from index 1 to index 3
     // Result: newArray is [2, 3, 4]
-    ```
+  
 
 In short, `splice` changes the original array by adding, removing, or replacing elements, while `slice` returns a portion of the array as a new array without modifying the original.
 
@@ -358,7 +496,7 @@ In summary, SPAs offer dynamic, seamless experiences with potential trade-offs i
    - Sent using `store.dispatch()` method.
    - Created via action creators, which are functions returning action objects.
 
-```javascript
+
 // Example of an action creator
 const incrementCounter = (amount) => {
   return {
@@ -369,14 +507,13 @@ const incrementCounter = (amount) => {
 
 // Dispatching the action
 store.dispatch(incrementCounter(5));
-```
 
 2. **Reducers:**
    - Pure functions taking current state and action to produce a new state.
    - Based on the `reduce` function in JavaScript.
    - Specify how application state changes in response to dispatched actions.
 
-```javascript
+
 // Example of a reducer
 const counterReducer = (state = 0, action) => {
   switch (action.type) {
@@ -386,19 +523,17 @@ const counterReducer = (state = 0, action) => {
       return state;
   }
 };
-```
 
 3. **Store:**
    - Object holding the entire state tree of the application.
    - Responsible for storing, reading, and updating state.
    - Updates trigger re-renders in React components subscribed to it.
 
-```javascript
+
 // Example of creating a Redux store
 import { createStore } from 'redux';
 
 const store = createStore(counterReducer);
-```
 
 **Redux Workflow:**
 - **Dispatch:** Method triggering actions with type and payload to reducers.
@@ -420,6 +555,65 @@ These additional points provide more insight into the benefits and usage of Redu
 
 ------------------------------------------------------------------------------------------------
 
+Here's why we use return () => { ... }:
+
+Cleanup Function Definition: The return statement defines the cleanup function. This function will be called when the component unmounts or before the effect runs again if any dependencies change.
+
+
+
+
+------------------------------------------------------------------------------------------------
+
+Object.freeze()
+Object.seal()
+Object.preventExtensions()
+
+`Object.freeze()`, `Object.seal()`, and `Object.preventExtensions()` are 
+all methods in JavaScript used for controlling object mutability,
+ but they have different levels of restriction.
+
+1. `Object.freeze()`: 
+   - This method completely freezes an object, making it immutable. 
+   - Once an object is frozen, you cannot add, remove, or modify any properties of the object.
+   - This means that the object becomes "read-only."
+   - Example:
+     
+     const obj = { prop: 1 };
+     Object.freeze(obj);
+     obj.prop = 2; // This will fail silently or throw an error in strict mode
+    
+
+2. `Object.seal()`:
+- This method prevents new properties from being added to an object,
+- You cannot add or remove properties from a sealed object.
+- You can still modify existing properties' values.
+
+   - Example:
+     
+     const obj = { prop: 1 };
+     Object.seal(obj);
+     obj.prop = 2; // This will change the value of 'prop'
+     obj.newProp = 3; // This will fail silently or throw an error in strict mode
+    
+
+3. `Object.preventExtensions()`:
+   - you cannot addd  new properties  added to an object,
+    but it allows existing properties to be modified or deleted.
+   - Essentially, it makes an object non-extensible.
+
+   - Example:
+     
+     const obj = { prop: 1 };
+     Object.preventExtensions(obj);
+     obj.prop = 2; // This will change the value of 'prop'
+     obj.newProp = 3; // This will fail silently or throw an error in strict mode
+     delete obj.prop; // This will delete the 'prop' property
+    
+
+In summary, `
+ Object.freeze()` makes an object completely immutable, 
+`Object.seal()` makes it so you can modify existing properties but not add or remove them,
+`Object.preventExtensions()` only prevents new properties from being added while allowing existing properties to be modified or removed.
 
 
 
@@ -434,17 +628,58 @@ These additional points provide more insight into the benefits and usage of Redu
 
 ------------------------------------------------------------------------------------------------
 
+##Session Storage:
+- Data stored in session storage is scoped to the current browsing session.
+- It is only available within the same tab or window that created it.
+- Data is lost when the tab or window is closed or the session ends.
+- Each browsing session maintains its own separate session storage.
+- Data stored in one session will not be accessible in another session, even if it's on the same website.
+
+
+1. Storing Data:
+
+sessionStorage.setItem('key', 'value');
+
+2. Retrieving Data:
+
+var value = sessionStorage.getItem('key');
+
+3. Removing an Item:
+
+sessionStorage.removeItem('key');
+
+4. Clearing All Data:
+
+sessionStorage.clear();
+
+
+##Local Storage:
+
+- Data stored in local storage is scoped to the same origin (protocol, domain, and port).
+- It is accessible across multiple tabs and windows of the same origin.
+- Data persists even after the browser is closed and reopened.
+- Each origin maintains its own separate local storage.
+- Data stored in local storage will be available across different sessions, allowing for continuity of user preferences and application state.
+
+Here's how you can use JavaScript to store, retrieve, and clear data from both Session Storage and Local Storage, along with methods for removing individual items and clearing all stored data:
 
 
 
+1. Storing Data:
 
+localStorage.setItem('key', 'value');
 
-------------------------------------------------------------------------------------------------
+2. Retrieving Data:
 
+var value = localStorage.getItem('key');
 
+3. Removing an Item:
 
+localStorage.removeItem('key');
 
+4. Clearing All Data:
 
+localStorage.clear();
 
 ------------------------------------------------------------------------------------------------
 

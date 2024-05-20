@@ -1,3 +1,45 @@
+// Compare two array and return only the uncommon value in new array without using inbuilt methods
+const array1 = [1,2,3,4,5,6]
+
+const array2 = [4,5,6,7,8,9]
+
+const findUncVal=(arry1,arry2)=>{
+  const uniF1= arry1.filter(value=>!array1.includes(value))
+  const uniF2=arry2.filter(value=>!array12.includes(value))
+ return [...uniF1,...uniF1];
+ 
+ }
+ cosole.log(findUncVal(array1,array2))
+
+
+const findUncVal2 =(array1,array2)=>{
+const unCommon =[];
+const contains=(array,value)=>{
+for(let i=0;i<array.length;i++){
+    if(array[i]==value){
+          return true
+    }
+}
+return false
+}
+for(let i=0;i<array1.length;i++){
+    if(!contains(array2,array1[i])){
+        unCommon.push(array1[i])
+        
+    }
+}
+for(let i=0;i<array2.length;i++){
+    if(!contains(array1,array2[i])){
+        unCommon.push(array2[i])
+        
+    }
+}
+return unCommon
+}
+console.log(findUncVal2(array1,array2))
+
+
+
 //=======================Q.1 HoW to empty an array in JavaScript==========================4
 console.log(" Q.1 HoW to empty an array in JavaScript");
 

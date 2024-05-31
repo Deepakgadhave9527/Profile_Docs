@@ -330,7 +330,7 @@ Promise:
 -they can handle multiple asynchronous operation easily and provide better error handling then Callback and event
 #promise has four strategist
 1]fulfilled: Action related to the promise succeeded
-2] Action related to the promise failed
+2] Rejected : Action related to the promise failed
 3] pending- Neither fulfilled nor rejected yet means promise still pending.
 4]settle- The Promise has been either fulfilled or rejected.
 
@@ -378,15 +378,26 @@ A then() returns a promise
 async await
 
 -The async await is used to pause the execution of a function until a promise gets settled
+
+A] - Async Keyword:
+
+-async keyword Put the before a function , tells the function to return a Promise
+- This allows the function to use the "await" keyword internally to handle asynchronous operations.
+
+
+B]- Await Keyword:
+
+ 
+-  "await" keyword is used within an async function to pause its execution until a Promise is settled.
+- It waits for the Promise to resolve (either fulfilled or rejected) and then returns its result.
+- Note: The "await" keyword can only be used inside async functions, otherwise, it would result in a SyntaxError.
+
+
+
 -await should only be used inside the async function.
 
-
-A]
--async keyword Put the before a function , tells the function to return a Promise
-
-B]Await:-
 -The await keyword simply makes JavaScript wait until that Promise settles and then returns its result
--await keyword only works inside async functions, otherwise you would get a SyntaxError.
+-await keyword only works inside async functions, otherwise you would get a SyntaxError. 
 
 
 //===========================global object =========================
@@ -417,7 +428,12 @@ Using document object you can dynamically update the content on the viewport.
 
 
 Q2. What is this?
--The JavaScript this keyword refers to the object it belongs to.
+
+In JavaScript, the `this` keyword refers to the current execution context. 
+Its value depends on how a function is called and where it is called. 
+The behavior of `this` can vary in different situations:
+
+<!-- -The JavaScript this keyword refers to the object it belongs to. -->
 -Alone, this refers to the global object.
 -In a function, this refers to the global object.
 -In a method, this refers to the owner object.
@@ -428,6 +444,58 @@ Q2. What is this?
 
 
 It has different values depending on where it is used:
+
+
+
+
+1. **Global context**: In the global scope, `this` refers to the global object, which is `window` in web browsers and `global` in Node.js.
+
+```javascript
+console.log(this === window); // true in a browser environment
+```
+
+2. **Function context**: Inside a function, the value of `this` depends on how the function is called. If the function is called as a method of an object, `this` refers to that object.
+
+```javascript
+const obj = {
+  name: 'example',
+  greet: function() {
+    console.log('Hello, ' + this.name);
+  }
+};
+
+obj.greet(); // Output: Hello, example
+```
+
+3. **Constructor context**: When a function is used as a constructor with the `new` keyword, `this` refers to the newly created instance.
+
+```javascript
+function Person(name) {
+  this.name = name;
+}
+
+const person1 = new Person('John');
+console.log(person1.name); // Output: John
+```
+
+4. **Explicit binding**: You can explicitly set the value of `this` using `call()`, `apply()`, or `bind()` methods.
+
+```javascript
+function greet() {
+  console.log('Hello, ' + this.name);
+}
+
+const obj1 = { name: 'Alice' };
+const obj2 = { name: 'Bob' };
+
+greet.call(obj1); // Output: Hello, Alice
+greet.apply(obj2); // Output: Hello, Bob
+
+const greetBob = greet.bind(obj2);
+greetBob(); // Output: Hello, Bob
+```
+
+Understanding the context in which `this` is used is crucial for writing effective JavaScript code.
 
 //===========================Bubbling and Capturing =========================
 
@@ -2390,8 +2458,8 @@ console.log(a)//11
 
 //pre increment
 var b=10
-console.log(++b);
-console.log(b);
+console.log(++b);//11
+console.log(b);//11
 
 decrement operators (--) - decreases the value by one 
 
@@ -2402,8 +2470,8 @@ console.log(a)//9
 
 //pre decrement
 var b=10
-console.log(--b);
-console.log(b);
+console.log(--b);9
+console.log(b);0
 
 
 2] binary operators:-

@@ -1,6 +1,7 @@
 <script>
     What are hooks ?
 
+
     -Hooks are the new feature introduced in the React 16.8 version.
     -With help of the React Hook we can use  state and other React features without writing a class.
     -usually hook start the use keyword
